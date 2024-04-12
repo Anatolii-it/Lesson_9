@@ -1,29 +1,31 @@
-#include <iostream>
+﻿#include <iostream>
 #include <fstream>
 #include <string>
 
+using namespace std;
+
 int main() {
-    std::ifstream input_file("input.txt"); // Вхідний файл
-    std::ofstream output_file("output.txt"); // Вихідний файл
+    ifstream input_file("input.txt"); 
+    ofstream output_file("output.txt");
 
     if (!input_file.is_open()) {
-        std::cerr << "Не вдалося відкрити вхідний файл!" << std::endl;
+        cerr << "EROR input.txt" << endl;
         return 1;
     }
 
     if (!output_file.is_open()) {
-        std::cerr << "Не вдалося відкрити вихідний файл!" << std::endl;
+        cerr << "EROR output.txt" << endl;
         return 1;
     }
 
-    std::string word;
+    string word;
     while (input_file >> word) {
-        if (word.length() >= 7) { // Перевірка, чи слово має не менше ніж 7 літер
-            output_file << word << " "; // Запис слова у вихідний файл
+        if (word.length() >= 7) {
+            output_file << word << " ";
         }
     }
 
-    std::cout << "Операція завершена. Переписані слова збережено у файлі 'output.txt'." << std::endl;
+    cout << "Операція завершена. создан 'output.txt'." << endl;
 
     input_file.close();
     output_file.close();
