@@ -203,7 +203,7 @@ void MonoAlphabetOut(int k)
 
 int main()
 {
-    //setlocale(LC_ALL, "Russian");
+    setlocale(LC_ALL, "UTF-8");
     
     int k = 0;
     cout << "Сдвиг: ";
