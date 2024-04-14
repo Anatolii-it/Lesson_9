@@ -204,7 +204,7 @@ void MonoAlphabetOut(int k)
 int main()
 {
     //setlocale(LC_ALL, "Russian");
-
+    
     int k = 0;
     cout << "Сдвиг: ";
     cin >> k;
@@ -221,6 +221,6 @@ int main()
     MonoAlphabetIn(k);
     cout << "Дешифровка Моноалфавит." << '\n';
     MonoAlphabetOut(k);
-
+    system("pause");
     return 0;
 }
