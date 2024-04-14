@@ -1,19 +1,22 @@
-#include <iostream>
+﻿#include <iostream>
 #include <fstream>
 #include <string>
 
 using namespace std;
 
-string encryptCaesarCipher(const string& text, int shift) {
+
+string caesarCipher(const string& text, int key) {
     string result = "";
 
-    for (char c : text) {
-        if (isalpha(c)) {
-            char base = islower(c) ? 'a' : 'A';
-            result += static_cast<char>((c - base + shift) % 26 + base);
+    for (char character : text) {
+        
+        if (character >= 'А' && character <= 'я') {
+            char base = isupper(character) ? 'А' : 'а';
+            char encryptedChar = char((character - base + key + 32) % 32 + base);
+            result += encryptedChar;
         }
         else {
-            result += c; 
+            result += character; 
         }
     }
 
@@ -21,31 +24,35 @@ string encryptCaesarCipher(const string& text, int shift) {
 }
 
 int main() {
-    ifstream input_file("input.txt"); 
-    ofstream output_file("output.txt");
-
-    if (!input_file.is_open()) {
-        cerr << "Не вдалося відкрити вхідний файл!" << endl;
+    //setlocale(LC_ALL, "ru_RU.UTF-8");
+    ifstream inputFile("input.txt");
+    if (!inputFile) {
+        cerr << "Unable to open input file." << endl;
         return 1;
     }
 
-    if (!output_file.is_open()) {
-        cerr << "Не вдалося відкрити вихідний файл!" << endl;
+    string inputText;
+    getline(inputFile, inputText);
+
+    inputFile.close();
+
+    cout << "Input text from input.txt: " << inputText << endl; 
+
+    int key = 3;
+
+    string encryptedText = caesarCipher(inputText, key);
+
+    ofstream outputFile("output.txt");
+    if (!outputFile) {
+        cerr << "Unable to open output file." << endl;
         return 1;
     }
+    
+    outputFile << encryptedText;
 
-    int key = 3; // Ключ
+    outputFile.close();
 
-    string line;
-    while (getline(input_file, line)) {
-        string encrypted_line = encryptCaesarCipher(line, key);
-        output_file << encrypted_line << endl;
-    }
-
-    cout << "Записано у файл 'output.txt'." << endl;
-
-    input_file.close();
-    output_file.close();
+    cout << "збережено в output.txt." << endl;
 
     return 0;
 }
