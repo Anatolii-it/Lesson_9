@@ -8,15 +8,18 @@ string caesarCipher(const string& text, int key) {
     string result = "";
 
     for (char character : text) {
-        
-        if (character >= 'А' && character <= 'я') {
-            
-            char base = isupper(character) ? 'А' : 'а';
-         
-            result += char(((character + key - base + 32) % 32) + base);
+        if ((character >= 'А' && character <= 'я') || (character >= 'A' && character <= 'z')) {
+            char base;
+            if (character >= 'А' && character <= 'я') {
+                base = isupper(character) ? 'А' : 'а';
+                result += char(((character - base + key + 32) % 64) + base);
+            }
+            else {
+                base = isupper(character) ? 'A' : 'a';
+                result += char(((character - base + key + 26) % 26) + base);
+            }
         }
         else {
-          
             result += character;
         }
     }
