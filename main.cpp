@@ -1,4 +1,4 @@
-#include <iostream>
+﻿#include <iostream>
 #include <fstream>
 #include <string>
 
@@ -25,7 +25,7 @@ string caesarCipher(const string& text, int key) {
 }
 
 int main() {
-    //system("chcp 1251>nul");
+    system("chcp 1251>nul");
     ifstream inputFile("input.txt");
     if (!inputFile) {
         cerr << "Unable to open input file." << endl;
