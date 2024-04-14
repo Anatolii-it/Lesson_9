@@ -1,1 +1,0 @@
-SQL Server Analytical Toolkit: Using Windowing, Analytical, Ranking, and Aggregate
