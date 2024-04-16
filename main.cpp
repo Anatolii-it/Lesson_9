@@ -29,6 +29,7 @@ int main() {
     system("chcp 1251>nul");
 
     std::string text = "сьеш";
+    std::cout << " text: " << text << std::endl;
     int key = 3;
     std::string encryptedText = caesarCipher(text, key);
     std::cout << "Encrypted text: " << encryptedText << std::endl;
