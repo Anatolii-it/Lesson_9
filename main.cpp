@@ -1,13 +1,5 @@
-﻿#include <stdio.h>
-#include <tchar.h>
-#include <iostream>
-#include <string>
-#include <conio.h>
-#include <array>
-#include <vector>
-#include <locale>
+﻿#include <iostream>
 #include <fstream>
-#include <streambuf>
 
 using namespace std;
 
@@ -16,10 +8,9 @@ void CaesarIn(int k) {
     ofstream output("caesarin.txt");
 
     char buff;
-    int iter;
 
     if (!input.is_open())
-        cout << "Файл не может быть открыт!\n";
+        cout << "Файл не може бути відкритий!\n";
     else {
         while (!input.eof()) {
             buff = input.get();
@@ -39,7 +30,6 @@ void CaesarIn(int k) {
                 if (buff > 'z')
                     buff -= 26;
                 output << buff;
-
             }
             if (buff >= 'А' && buff <= 'Я') {
                 buff += (k % 33);
@@ -64,10 +54,9 @@ void CaesarOut(int k) {
     ofstream output("caesarout.txt");
 
     char buff;
-    int iter;
 
     if (!input.is_open())
-        cout << "Файл не может быть открыт!\n";
+        cout << "Файл не може бути відкритий!\n";
     else {
         while (!input.eof()) {
             buff = input.get();
@@ -87,7 +76,6 @@ void CaesarOut(int k) {
                 if (buff > 'z')
                     buff += 26;
                 output << buff;
-
             }
             if (buff >= 'А' && buff <= 'Я') {
                 buff -= (k % 33);
@@ -107,104 +95,7 @@ void CaesarOut(int k) {
     output.close();
 }
 
-void MonoAlphabetIn(int k)
-{
-    ifstream input("input.txt");
-    ofstream output("monoalp.txt");
-
-    char buff;
-    int iter;
-
-    if (!input.is_open())
-        cout << "Файл не может быть открыт!\n";
-    else {
-        while (!input.eof()) {
-            buff = input.get();
-            if (buff == ' ')
-                output << ' ';
-            if (buff == '\n')
-                output << '\n';
-            if (buff >= 'A' && buff <= 'Z') {
-                iter = int(buff) - int('A');
-                iter = (iter + k) % 26;
-                iter += (int)'A';
-                output << char(iter);
-            }
-            if (buff >= 'a' && buff <= 'z') {
-                iter = int(buff) - int('a');
-                iter = (iter + k) % 26;
-                iter += (int)'a';
-                output << char(iter);
-            }
-            if (buff >= 'А' && buff <= 'Я') {
-                iter = int(buff) - int('А');
-                iter = (iter + k) % 32;
-                iter += (int)'А';
-                output << char(iter);
-            }
-            if (buff >= 'а' && buff <= 'я') {
-                iter = int(buff) - int('а');
-                iter = (iter + k) % 32;
-                iter += (int)'а';
-                output << char(iter);
-            }
-        }
-    }
-    input.close();
-    output.close();
-}
-
-void MonoAlphabetOut(int k)
-{
-    ifstream input("monoalp.txt");
-    ofstream output("monoalpout.txt");
-
-    char buff;
-    int iter;
-
-    if (!input.is_open())
-        cout << "Файл не может быть открыт!\n";
-    else {
-        while (!input.eof()) {
-            buff = input.get();
-            if (buff == ' ')
-                output << ' ';
-            if (buff == '\n')
-                output << '\n';
-            if (buff >= 'A' && buff <= 'Z') {
-                iter = int(buff) - int('A');
-                iter = (iter - k + 26) % 26;
-                iter += (int)'A';
-                output << char(iter);
-            }
-            if (buff >= 'a' && buff <= 'z') {
-                iter = int(buff) - int('a');
-                iter = (iter - k + 26) % 26;
-                iter += (int)'a';
-                output << char(iter);
-            }
-            if (buff >= 'А' && buff <= 'Я') {
-                iter = int(buff) - int('А');
-                iter = (iter - k + 32) % 32;
-                iter += (int)'А';
-                output << char(iter);
-            }
-            if (buff >= 'а' && buff <= 'я') {
-                iter = int(buff) - int('а');
-                iter = (iter - k + 32) % 32;
-                iter += (int)'а';
-                output << char(iter);
-            }
-        }
-    }
-    input.close();
-    output.close();
-}
-
-int main()
-{
- 
-    
+int main() {
     int k = 0;
     cout << "Сдвиг: ";
     cin >> k;
@@ -212,15 +103,11 @@ int main()
     if (k < 1)
         return 0;
 
-    cout << "Шифровка Цезарь. " << '\n';
+    cout << "Шифрування Цезаря. " << '\n';
     CaesarIn(k);
-    cout << "Дешифровка Цезарь." << '\n';
+    cout << "Дешифрування Цезаря." << '\n';
     CaesarOut(k);
 
-    cout << "Шифровка Моноалфавит. " << '\n';
-    MonoAlphabetIn(k);
-    cout << "Дешифровка Моноалфавит." << '\n';
-    MonoAlphabetOut(k);
     system("pause");
     return 0;
 }
