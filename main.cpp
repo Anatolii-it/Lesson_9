@@ -28,7 +28,7 @@ string caesarCipher(const string& text, int key) {
 }
 
 int main() {
-    system("chcp 1251>nul");
+    //system("chcp 1251>nul");
     ifstream inputFile("input.txt");
     if (!inputFile) {
         cerr << "Unable to open input file." << endl;
@@ -56,7 +56,7 @@ int main() {
 
     outputFile.close();
 
-    cout << "Encryption successful. Encrypted text written to output.txt." << endl;
+    cout << "Збережено у файл output.txt." << endl;
 
     return 0;
 }
