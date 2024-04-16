@@ -30,21 +30,21 @@ int main() {
         char_count += line.length(); 
 
         for (char c : line) {
-            if (isalpha(c)) { // Перевіряємо, чи символ є буквою
-                char lower_c = tolower(c); // робимо усі маленьки
+            if (isalpha(c)) { 
+                char lower_c = tolower(c);
                 if (lower_c == 'a' || lower_c == 'e' || lower_c == 'i' || lower_c == 'o' || lower_c == 'u') {
-                    vowel_count++; // Голосна буква
+                    vowel_count++; 
                 }
                 else {
-                    consonant_count++; // Приголосна буква
+                    consonant_count++;
                 }
             }
             else if (isdigit(c)) {
-                digit_count++; // цифри
+                digit_count++;
             }
         }
 
-        line_count++; //  рядки
+        line_count++;
     }
 
     
