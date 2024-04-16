@@ -6,6 +6,7 @@
 using namespace std;
 
 int main() {
+    system("chcp 1251>nul");
     ifstream input_file("input.txt");
     ofstream output_file("output.txt");
 
