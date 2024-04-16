@@ -203,7 +203,7 @@ void MonoAlphabetOut(int k)
 
 int main()
 {
-    system("chcp 1251>nul");
+ 
     
     int k = 0;
     cout << "Сдвиг: ";
